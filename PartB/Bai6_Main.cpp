@@ -33,7 +33,7 @@ main(){
             cout << "THONG BAO - Nhap gia tri can chen: "; cin >> value;
             cout << "THONG BAO - Nhap vi tri can chen: "; cin >> pos;
             Ds.insertAt(pos,value);
-            cout << "THONG BAO - Them gia tri thanh cong!" << endl;
+            
         }
 
         else if(luachon == 3){

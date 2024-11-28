@@ -20,8 +20,8 @@ class Dayso{
 
         void add(int value){
             Node* newNode = new Node(value);
-            if(!head){
-                head = newNode;
+            if(!head){ 
+                head = newNode; // list rong thi head se tro thanh node dau tien trong list
             }
             else{
                 Node* temp = head;
@@ -33,6 +33,11 @@ class Dayso{
         }
 
         void print() const{
+            if(!head){
+                cout << "Danh sach hien tai khong co phan tu nao." << endl;
+                return;
+            }
+
             cout << "DAY SO DA NHAP: ";
             Node* temp = head;
             while(temp){
@@ -59,8 +64,13 @@ class Dayso{
                 if(input == "#"){
                     break;
                 }
-                int value = static_cast<int>(stoi(input));
-                add(value);
+                try{
+                    int value = stoi(input);
+                    add(value);
+                }
+                catch(exception& e){
+                    cout << "Gia tri nhap khong hop le,nhap # de dung qua trinh nhap cac so." << endl;
+                }
             }
 
         }
@@ -72,6 +82,7 @@ class Dayso{
             if(pos == 1){ // neu chen vao vi tri dau tien danh sach
                 newNode->next = head;
                 head = newNode;
+                cout << "THONG BAO - Them gia tri thanh cong!" << endl;
                 return;
             }
             Node* temp = head;
@@ -85,6 +96,7 @@ class Dayso{
             else{
                 newNode->next = temp->next;
                 temp->next = newNode;
+                cout << "THONG BAO - Them gia tri thanh cong!" << endl;
             }
         }
 //c) Nhap vao mot so k ,dem xem co bao nhieu phan tu trong day so bang k
@@ -102,18 +114,34 @@ class Dayso{
 
 //d) Kiem tra xem trong danh sach co 3 so chan duong dung canh nhau hay khong?
         void checkThreeValueEqual(){
-            Node* temp = head;
+            if(!head || !head->next || !head->next->next){
+                cout << "CAN PHAI CO IT NHAT 3 PHAN TU DE TIEN HANH KIEM TRA." << endl;
+                return;
+            }
+            Node* first = head;
+            Node* second = head->next;
+            Node* third = head->next->next;
             int index = 1;
-            while(temp && temp->next && temp->next->next){
-                if((temp->data > 0 && temp->data % 2 == 0) && (temp->next->data > 0 && temp->next->data % 2 == 0) && (temp->next->next->data > 0 && temp->next->next->data % 2 == 0)){
+            bool found = false;
+            while(third){
+                if(isEvenPositive(first->data) && isEvenPositive(second->data) && isEvenPositive(third->data)){
+                    found = true;
                     cout << "THONG BAO - Co 3 so chan dung canh nhau" << endl;
-                    cout << "THONG BAO - Vi tri cua 3 so chan la: " << index << ", " << index + 1 << ", " << index + 2 << endl;
-                    return;
+                    cout << "THONG BAO - Vi tri cua 3 so chan la: " << index << ", " << index + 1 << ", " << index + 2 << endl;    
                 }
-                temp = temp->next;
+                first = second;
+                second = third;
+                third = third->next;
                 index++;
             }
-            cout << "KHONG CO 3 SO CHAN DUONG DUNG CANH NHAU!" << endl;
+            if(!found){
+                cout << "KHONG CO 3 SO CHAN DUONG DUNG CANH NHAU!" << endl;
+                return;
+            }
+
+        }
+        bool isEvenPositive(int value){
+            return value > 0 && value % 2 == 0;
         }
 
 //e) Sap xep danh sach theo thu tu tang dan

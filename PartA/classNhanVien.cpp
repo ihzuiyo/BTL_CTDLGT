@@ -36,16 +36,16 @@ class NhanVien{
         os << setw(30) << nv.maNV << setw(30) << nv.ten << setw(30) << nv.tuoi << setw(30) << nv.chucvu << endl;
         return os;
     }
-    long long lay_maNV(){ 
+    long long lay_maNV() const{ 
         return maNV;
     }
-    string lay_ten(){
+    string lay_ten() const{
         return ten;
     }
-    long long lay_tuoi(){
+    long long lay_tuoi() const{
         return tuoi;
     }
-    string lay_chucvu(){
+    string lay_chucvu() const{
         return chucvu;
     }
     static void inBang(){

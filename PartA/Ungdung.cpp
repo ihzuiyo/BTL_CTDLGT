@@ -76,10 +76,14 @@ class UngDung{
                         cout << "Nhap ma nhan vien de truy xuat thong tin nhan vien day: ";
                         cin >> maNV;
                         if(!NV.empty()){
-                            NhanVien TimNhanVien = NV.timNhanVien(maNV);
-                            cout << "Thong tin cua nhan vien co ma NV " << maNV << " " << "la: " << endl;
-                            NhanVien::inBang;
-                            cout << TimNhanVien;
+                            NhanVien nv;
+                            if(NV.timNhanVien(maNV,nv)){
+                                cout << "Thong tin cua nhan vien co ma NV " << maNV << " " << "la: " << endl;
+                                cout << nv << endl;
+                            }
+                            else{
+                                cout << "Khong tim thay nhan vien co ma NV la " << maNV << endl;
+                            }
                         }
                         else{
                             cout << "DANH SACH NHAN VIEN TRONG!" << endl;

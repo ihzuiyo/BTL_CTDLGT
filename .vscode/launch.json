@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "d:/study/dai hoc/nam2/Data structure and Algorithm/BigHomework_DT&A/work/PartB",
-      "program": "d:/study/dai hoc/nam2/Data structure and Algorithm/BigHomework_DT&A/work/PartB/build/Debug/outDebug",
+      "cwd": ".",
+      "program": "build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
